@@ -139,7 +139,8 @@ def paras2doc(paras, output_doc, doc_name, last_para,
     return last_para, last_para_ended
 
 
-def pdf_ocr(pdf_name, path, method_get_image, words_per_line, ocr_method):
+def pdf_ocr(pdf_name, path, method_get_image, words_per_line,
+            ocr_method, client_id, client_secret):
     # 打开pdf
     doc = fitz.open(path)
     access_token = None
@@ -303,5 +304,5 @@ if __name__ == '__main__':
             #     print("文件夹已存在，请重新创建新文件夹！")
             # else:
             #     os.mkdir(pic_path)
-            m = pdf_ocr(file_name, pdf_path, image_method,
-                        words_per_line, ocr_method)
+            m = pdf_ocr(file_name, pdf_path, image_method, words_per_line,
+                        ocr_method, client_id, client_secret)
