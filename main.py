@@ -43,6 +43,8 @@ def ocr_baidu(image, words_per_line, access_token):
             words = tmp['words']
             # 排除页码
             if i == length-1 and words.isdigit():
+                if temp_para != '':
+                    paras.append(temp_para)
                 continue
             temp_para = temp_para+words
             # after_para标志解决首行缩进问题
@@ -287,8 +289,11 @@ if __name__ == '__main__':
     # ocr_method = "local"
     ocr_method = "online"
     # 百度 API 的 API key 和 Secret key
-    client_id = None
-    client_secret = None
+    client_id = ""
+    client_secret = ""
+    with open('baidu_keys.txt', mode='r') as f:
+        client_id = f.readline().strip()
+        client_secret = f.readline().strip()
 
     g = os.walk(dir_path)
     for path, dir_list, file_list in g:

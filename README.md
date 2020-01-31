@@ -47,8 +47,13 @@
     # ocr_method = "local"
     ocr_method = "online"
     # 百度 API 的 API key 和 Secret key
-    client_id = None
-    client_secret = None
+    client_id = ""
+    client_secret = ""
+    with open('baidu_keys.txt', mode='r') as f:
+        client_id = f.readline().strip()
+        client_secret = f.readline().strip()
 ```
 
 其中百度 API 在以下界面申请使用: [通用文字识别能力](https://ai.baidu.com/tech/ocr/general)
+
+申请之后，在此目录下新建 `baidu_keys.txt` 文本文档，把 `client_id`、 `client_secret`  分成两行存入该文本文档即可。
