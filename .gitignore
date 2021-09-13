@@ -84,3 +84,5 @@ target/
 baidu_keys.txt
 *.doc
 *pdf
+output
+output/*
