@@ -154,9 +154,9 @@ def pdf_ocr(pdf_name, path, method_get_image, words_per_line,
             access_token = response.json()["access_token"]
             print(access_token)
     if if_image_to_pdf_or_hocr:
-        doc_name = pdf_name[:-4] + "_output.pdf"
+        doc_name = 'output/'+pdf_name[:-4] + "_output.pdf"
     else:
-        doc_name = pdf_name[:-4] + "_output.doc"
+        doc_name = 'output/'+pdf_name[:-4] + ".docx"
 
     # 正则式提取图片法
     if method_get_image == '正则式':
@@ -211,9 +211,9 @@ def pdf_ocr(pdf_name, path, method_get_image, words_per_line,
             output_doc = fitz.open()
         else:
             output_doc = docx.Document()
-            output_doc.styles['Normal'].font.name = u'宋体'
+            output_doc.styles['Normal'].font.name = u'等线'
             output_doc.styles['Normal']._element.rPr.rFonts\
-                      .set(qn('w:eastAsia'), u'宋体')
+                      .set(qn('w:eastAsia'), u'等线')
         time_start = time.time()
         page_count = doc.pageCount
         for pg in range(doc.pageCount):
@@ -280,14 +280,14 @@ def test_format():
 if __name__ == '__main__':
     # test_format()
     # pdf所在文件夹路径
-    dir_path = "./"
+    dir_path = "input/"
     # 获取 pdf 中 image 的方法：每一页 还是 正则式检查每一个对象
     image_method = "页面"
     # pdf 中每一行的文字个数，我取的是非段结尾行的文字个数(如36\37\38)的最小值
-    words_per_line = 36
+    words_per_line = 28
     # ocr API：本地的Tesseract 还是 在线的百度
-    # ocr_method = "local"
-    ocr_method = "online"
+    ocr_method = "local"
+    # ocr_method = "online"
     # 百度 API 的 API key 和 Secret key
     client_id = ""
     client_secret = ""

@@ -1,4 +1,12 @@
 pillow
 python-docx
-pytesseract
 pymupdf
+baidu-aip
+easyocr
+numpy
+opencv-python
+paddleocr
+pyqt5
+pysubs2
+qimage2ndarray
+requests
